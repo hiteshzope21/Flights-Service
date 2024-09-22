@@ -19,7 +19,18 @@ async function createAirplane(data){
         throw new AirPlaneError('cannot creating aiplane object ', StatusCodes.INTERNAL_SERVER_ERROR)    }
 }
 
+async function getAirplanes(){
+    try{
+      
+        const airplanes = await airplaneRepository.getAll();
+        return airplanes;
+    }catch(error){
+        throw new AirPlaneError('C`annot fetsch data of airplanes', StatusCodes.INTERNAL_SERVER_ERROR)    }
+
+    }
+
 
 module.exports  = {
     createAirplane,
+    getAirplanes,
 }

@@ -7,10 +7,7 @@ const {Logger} = require('./config')
 const routes = require('./routes');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use('/api', routes);
-
-
-console.log({port:  serverConfig.PORT})
+app.use('/api', routes); 
 
 app.listen(3000, () => {
     console.log(`Successfully started the server ${3000}`);
