@@ -1,4 +1,7 @@
+const { combineTableNames } = require('sequelize/lib/utils');
 const { Logger } = require('../config');
+const {StatusCodes} = require('http-status-codes')
+const {AirPlaneError} = require('../utils')
 
 class CrudRepository {
     constructor(model) {
@@ -21,6 +24,9 @@ class CrudRepository {
 
     async get(data) {
         const response = await this.model.findByPk(data)
+        if(!response){
+            throw new AirPlaneError('Not able find resources', StatusCodes.NOT_FOUND);
+        }
         return response;
 
     }
