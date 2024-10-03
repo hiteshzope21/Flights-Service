@@ -19,6 +19,9 @@ class CrudRepository {
                 id: data,
             }
         })
+        if(!response){
+            throw new AirPlaneError('Not able find resources', StatusCodes.NOT_FOUND);
+        }
         return response;
     }
 
